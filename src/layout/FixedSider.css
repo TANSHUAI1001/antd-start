@@ -1,0 +1,17 @@
+#components-layout-demo-side .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+  
+  .ant-layout-sider{
+    overflow-y: hidden;
+  }
+  .ant-layout-sider:hover{
+    overflow-y: auto;
+  }
+  
+  th.column-money,
+  td.column-money {
+    text-align: right !important;
+  }
