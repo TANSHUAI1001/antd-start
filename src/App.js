@@ -1,36 +1,36 @@
 import React from 'react';
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
-import WrappedNormalLoginForm from "./login/Login";
-import WrappedDemo from "./form/FormDemo";
-import {SiderContent,Dashboard,About} from "./layout/ContentDemo";
-import { NotFound } from "./common/ErrorPage";
+import FixedSider from "./containers/layout/FixedSider";
+import WrappedNormalLoginForm from "./containers/login/Login";
+import WrappedDemo from "./containers/form/FormDemo";
+import {FundManagement,Dashboard,AboutCompany} from "./containers/page/Content"
+import { NotFound } from "./components/ErrorPage";
+import { connect } from 'react-redux';
 
-class CheckLoginRoute extends React.Component{
 
-  render(){
-    const user = JSON.parse(sessionStorage.getItem("user"));
-    const menus = JSON.parse(sessionStorage.getItem("menus"));
-    const isLogin =  user && menus;
-    return isLogin? <Route {...this.props} />:<Redirect to="/login" />
-  }
-}
-
-// router
+// router if electorn user hash or memory
 class App extends React.Component{
+
   render(){
+    
     return(
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
           <Route path="/login" component={WrappedNormalLoginForm} />
-          <CheckLoginRoute path="/" exact component={SiderContent} />
-          <CheckLoginRoute path="/forms"  component={WrappedDemo} />
-          <CheckLoginRoute path="/dashboard" component={Dashboard} />
-          <CheckLoginRoute path="/about" component={About} />
-          <CheckLoginRoute component={NotFound} />
+          <FixedSider>
+            <Route path="/" exact component={WrappedDemo} />
+            <Route path="/fund"  component={FundManagement} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/profile" component={AboutCompany} />
+          </FixedSider>
+          <Route component={NotFound} />
         </Switch>
-    </HashRouter>
+    </BrowserRouter>
     )
   }
 }
+
+
+
 export default App;
