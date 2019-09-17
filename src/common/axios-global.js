@@ -25,7 +25,7 @@ axios.interceptors.response.use(res => {
     return Promise.resolve(res);
 },error => {
     console.log("error");
-    window.location.href = "/login";
+    // window.location.href = "/login";
     return Promise.reject(error);
 });
 

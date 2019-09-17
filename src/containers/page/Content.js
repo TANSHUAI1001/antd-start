@@ -25,6 +25,9 @@ export class FundManagement extends React.Component{
     data:[],
     loading:false,
     pagination:{
+      showSizeChanger:true,
+      showQuickJumper:true,
+      pageSizeOptions:['10','20','25','50'],
       current:1,
       page:1,
       pageSize:10,

@@ -89,9 +89,12 @@ class FixedSider extends React.Component {
           <div style={{height:'48px'}} />
         </Sider>
         <Layout style={{marginLeft:this.state.leftMargin, transition: "all 0.2s"}}>
-          <Header style={{ background: '#fff', padding: 0, boxShadow:'0 1px 4px rgba(0,21,41,.08)' }}>
-          
-            {this.props.sessionStore.user?<Avatar src={baseURL+"/"+this.props.sessionStore.user.avatar} />:null}
+          <Header style={{ textAlign:'right', background: '#fff', padding: 0, boxShadow:'0 1px 4px rgba(0,21,41,.08)' }}>
+            <div style={{marginRight:'80px'}}>
+            {this.props.sessionStore.user?<Avatar  src={baseURL+"/"+this.props.sessionStore.user.avatar} />:null}
+            <span style={{marginLeft:'5px'}}>{this.props.sessionStore.user?this.props.sessionStore.user.username:null}</span>
+            <a style={{marginLeft:'15px'}} href="/logout" disabled>登出</a>
+            </div>
           </Header>
           {this.props.children}
           <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>

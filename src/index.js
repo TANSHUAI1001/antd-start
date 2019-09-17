@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale-provider/zh_CN';
 import './index.css';
 import 'whatwg-fetch'; //window.fetch polyfill
 import 'promise-polyfill/src/polyfill'; 
@@ -33,9 +35,11 @@ let store = createStore(appState,applyMiddleware(...middleware));
 Promise._immediateFn = setAsap; 
 
 ReactDOM.render(
-<Provider store={store}>
-    <App />
-</Provider>,
+    <ConfigProvider locale={zhCN} >
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </ConfigProvider>,
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
